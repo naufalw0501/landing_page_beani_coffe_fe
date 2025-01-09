@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Marcellus&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+
+/* Container utama */
+.container {
+  font-family: 'Open Sans', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--light-color);
+}
+
+.container .container-cover-image {
+  display: flex;
+  flex-direction: row;
+  margin-top: 4dvh;
+}
+
+.container .container-cover-image .left-image {
+  flex: 1;
+  border-radius: 10px 0px 0px 10px;
+  width: 40dvw;
+}
+
+.container .container-cover-image .right-image {
+  flex: 1;
+  border-radius: 0px 10px 10px 0px;
+  width: 40dvw;
+  background-color: var(--tertiary-color);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../../asset/image/bg_text.png"); 
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+}
+
+.container .container-cover-image .right-image .title {
+  font-family: 'Marcellus', serif;
+  font-size: 48px;
+  color: var(--secondary-color);
+}
+
+.container .container-cover-image .right-image div {
+  color: var(--secondary-color);
+  padding: 0dvh 2dvw;
+}
+
+.container .container-cover-image .right-image button {
+  margin-top: 2dvh;
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  border-radius: 30px;
+  padding: 5px 15px; 
+  transition: all ease 0.3s;
+}
+
+.container .container-cover-image .right-image button:hover {
+  background-color: var(--primary-color);
+  color: var(--light-color);
+}
+
+.container .container-welcoming {
+  margin-top: 4dvh;
+  width: 100%;
+  position: relative;
+  background-color: var(--light-color);
+  height: 40dvh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.container .container-welcoming div {
+  font-style: italic;
+  font-weight: 100;
+  padding: 0dvh 30dvw;
+  font-size: 24px;
+}
+
+.container .container-welcoming .motif_kiri {
+  position: absolute;
+  left: 0px;
+  height: 40dvh;
+}
+
+.container .container-welcoming .motif_kanan {
+  position: absolute;
+  right: 0px;
+  height: 40dvh;
+}
+
+.container .container-shop-best-coffee {
+  margin-top: 4dvh;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0dvh 5dvw;
+}
+
+.container .container-shop-best-coffee .header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.container .container-shop-best-coffee .header .title {
+  font-family: 'Marcellus', serif;
+  font-size: 48px;
+  color: var(--secondary-color);
+}
+
+.container .container-shop-best-coffee .header .scrolling {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1dvw;
+}
+
+.container .container-shop-best-coffee .header .view_all {
+  color: var(--secondary-color);
+  border-bottom: 3px solid var(--gray-color);
+  padding: 2px 10px;
+  border-radius: 5px;
+  transition: all ease 0.3s;
+  margin-right: 1dvw;
+  font-weight: 600;
+}
+
+.container .container-shop-best-coffee .header .view_all:hover {
+  color: var(--light-color);
+  background-color: var(--secondary-color);
+}
+
+.container .container-shop-best-coffee .header .arrow {
+  padding: 10px 10px;
+  border-radius: 5px;
+  background-color: var(--gray-color);
+  color: var(--secondary-color);
+  transition: all ease 0.3s;
+}
+
+.container .container-shop-best-coffee .header .arrow:hover {
+  border-radius: 5px;
+  background-color: var(--secondary-color);
+  color: var(--gray-color);
+}
+
+/* Tambahkan animasi slide pada produk */
+.container .container-shop-best-coffee .products {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  overflow: visible; /* Pastikan elemen di luar area tidak terlihat */
+  gap: 1dvw;
+  transition: transform 0.5s ease; /* Animasi perpindahan produk */
+}
+
+.container .container-shop-best-coffee .card-product {
+  flex: 32.25%;
+  min-width: 32.25%;
+  width: 32.25%;
+  max-width: 32.25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+}
+
+.container .container-shop-best-coffee .card-product .title {
+  text-transform: uppercase;
+  font-size: 24px;
+  color: var(--secondary-color);
+  margin-top: 1dvh;
+}
+
+.container .container-shop-best-coffee .card-product .price {
+  font-size: 24px;
+  color: var(--primary-color);
+}
+
+.container .container-testimoni {
+  margin-top: 4dvh;
+  width: 100%;
+  position: relative;
+  background-color: var(--light-color);
+  height: 40dvh;
+  padding: 0dvh 10dvw;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 3dvw;
+}
+
+.container .container-testimoni .text {
+  font-size: 24px;
+  font-style: italic;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.container .container-testimoni .name {
+  font-family: 'Marcellus', serif;
+}
+
+.container .container-testimoni button {
+  padding: 5px 5px;
+  height: 30px;
+  border-radius: 20px;
+  background-color: var(--gray-color);
+  color: var(--secondary-color);
+  transition: all ease 0.3s;
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(10px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+.container .container-testimoni .text,
+.container .container-testimoni .name {
+  animation: fadeIn 0.5s ease-in-out;
+}
