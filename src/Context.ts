@@ -1,5 +1,5 @@
 import React from 'react';
-import { UserEntity } from './controller/UserAuth/UserEntity';
+import { UserEntity } from './controller/auth/UserEntity';
 const AppContext = React.createContext<{
     contextAccessToken: string,
     contextUserEntity: UserEntity | null,

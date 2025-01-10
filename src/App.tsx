@@ -4,7 +4,7 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AppContext from "./Context";
 import Cookies from "js-cookie";
-import { UserEntity } from "./controller/UserAuth/UserEntity";
+import { UserEntity } from "./controller/auth/UserEntity";
 import Navbar from "./views/layout/navbar/Navbar";
 import Footer from "./views/layout/footer/Footer";
 const Home = lazy(() => import("./views/page/home/Home"));
