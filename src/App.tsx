@@ -6,6 +6,7 @@ import AppContext from "./Context";
 import Cookies from "js-cookie";
 import { UserEntity } from "./controller/UserAuth/UserEntity";
 import Navbar from "./views/layout/navbar/Navbar";
+import Footer from "./views/layout/footer/Footer";
 const Home = lazy(() => import("./views/page/home/Home"));
 
 function App() {
@@ -43,11 +44,12 @@ function App() {
               </div>
             }
           >
-            <div style={{height: "25dvh"}}></div>
+            <div style={{height: "10dvh"}}></div>
             <Routes>
               <Route path="/" element={<Home />} />
             </Routes>
           </Suspense>
+          <Footer />
         </BrowserRouter>
       </AppContext.Provider>
     </div>

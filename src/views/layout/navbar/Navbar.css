@@ -14,20 +14,20 @@
     transition: 0.5s;
     border-top: 1px solid var(--secondary-color);
     border-bottom: 1px solid var(--secondary-color);
-    height: 10dvh;
-    margin: 7dvh 1dvw 3dvh 1dvw;
-    width: 96dvw;
+    height: 7dvh;
+    margin: 5dvh 1dvw 3dvh 1dvw;
+    width: 97dvw;
     overflow: visible;
 }
 
 .container-navbar .container-logo {
-    height: 21dvh;
+    height: 15dvh;
     aspect-ratio: 7/6;
     background-color: var(--light-color);
 }
 
 .container-navbar .container-logo img {
-    height: 21dvh;
+    height: 15dvh;
     aspect-ratio: 7/6;
 }
 

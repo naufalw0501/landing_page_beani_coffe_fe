@@ -18,7 +18,7 @@ function Navbar(props: { [key: string]: any }) {
     return (
         <>
             <div style={{ display: "flex" }}>
-                <div style={{position: "fixed", zIndex: "98", backgroundColor: "var(--light-color)", height: "22.5dvh", top: 0, width: "100%"}}> </div>
+                <div style={{position: "fixed", zIndex: "98", backgroundColor: "var(--light-color)", height: "17dvh", top: 0, width: "100%"}}> </div>
                 <div className="container-navbar">
                     <div className="button-left">
                         <button>Home</button>

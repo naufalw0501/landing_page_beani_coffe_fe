@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Marcellus&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+
+.container-footer {
+    font-family: 'Marcellus', serif;
+    text-transform: uppercase;
+}
+
+.container-footer button {
+    transition: all ease 0.5s;
+    color: var(--secondary-color);
+}
+
+.container-footer button:hover {
+    color: var(--primary-color);
+}
