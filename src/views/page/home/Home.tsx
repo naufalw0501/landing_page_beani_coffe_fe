@@ -1,27 +1,14 @@
-import { useContext, useState } from 'react';
+import { useEffect, useState } from 'react';
 import css from './Home.module.css';
-import { useNavigate } from "react-router-dom";
-import AppContext from '../../../Context';
 import product_1_image from "../../asset/image/product_1.png";
-import product_2_image from "../../asset/image/product_2.png";
-import product_3_image from "../../asset/image/product_3.png";
-import product_4_image from "../../asset/image/product_4.png";
 import category_1_image from "../../asset/image/category_1.png";
 import category_2_image from "../../asset/image/category_2.png";
 import category_3_image from "../../asset/image/category_3.png";
 import category_4_image from "../../asset/image/category_4.png";
-import new_arrival_1_image from "../../asset/image/new_arrival (1).png";
-import new_arrival_2_image from "../../asset/image/new_arrival (2).png";
-import new_arrival_3_image from "../../asset/image/new_arrival (3).png";
-import new_arrival_4_image from "../../asset/image/new_arrival (4).png";
-import new_arrival_5_image from "../../asset/image/new_arrival (5).png";
 import service_1_image from "../../asset/image/Vector.png";
 import service_2_image from "../../asset/image/Vector (1).png";
 import service_3_image from "../../asset/image/Vector (2).png";
 import service_4_image from "../../asset/image/Vector (3).png";
-import blog_1_image from "../../asset/image/blog (1).png";
-import blog_2_image from "../../asset/image/blog (2).png";
-import blog_3_image from "../../asset/image/blog (3).png";
 import motif_kanan from "../../asset/image/motif_kanan.png";
 import motif_kiri from "../../asset/image/motif_kiri.png";
 import instagram_1_image from "../../asset/image/instagram (1).png";
@@ -32,111 +19,30 @@ import instagram_5_image from "../../asset/image/instagram (5).png";
 import instagram_6_image from "../../asset/image/instagram (6).png";
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaTwitter, FaYoutube } from 'react-icons/fa';
+import { MenuInterface } from '../../../controller/menu/MenuDataInterface';
+import { TestimoniInterface } from '../../../controller/testimoni/TestimoniDataInterface';
+import { BlogInterface } from '../../../controller/blog/BlogDataInterface';
+import { MenuService } from '../../../controller/menu/MenuService';
+import { TestimoniService } from '../../../controller/testimoni/TestimoniService';
+import { BlogService } from '../../../controller/blog/BlogService';
 
 const Home = () => {
-    const navigate = useNavigate();
-    const context = useContext(AppContext);
-    const setContextUserEntity = context.setContextUserEntity;
+
+    //--------STATES VIEW--------//
+
+    const [dataMenuTopOrders, setDataMenuTopOrders] = useState<MenuInterface[]>([]);
+    const [dataMenuTopRelease, setDataMenuTopRelease] = useState<MenuInterface[]>([]);
+    const [dataTestimoni, setDataTestimoni] = useState<TestimoniInterface[]>([
+        { id: 0, customer: "", words: "" }
+    ]);
+    const [dataBlogTopRelease, setDataBlogTopRelease] = useState<BlogInterface[]>([]);
 
     const [productIndex, setProductIndex] = useState(0);
-    const products = [
-        { id: 1, image: product_2_image, title: 'Caramelicious', price: '$29.00' },
-        { id: 2, image: product_3_image, title: 'Hazelnut Heaven', price: '$29.00' },
-        { id: 3, image: product_4_image, title: 'Maple Magic', price: '$29.00' },
-        { id: 1, image: product_2_image, title: 'Caramelicious', price: '$29.00' },
-        { id: 2, image: product_3_image, title: 'Hazelnut Heaven', price: '$29.00' },
-        { id: 3, image: product_4_image, title: 'Maple Magic', price: '$29.00' },
-    ];
-
-    const testimonials = [
-        {
-            text: "“Habitant aliquet sed suspendisse lectus sit gravida sit morbi augue. Porta cursus diam sit velit mi. Maecenas scelerisque tellus nulla ut vitae amet morbi platea blandit vestibulum dignissim.”",
-            name: "Sarah Anderson",
-        },
-        {
-            text: "“Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio.”",
-            name: "John Smith",
-        },
-        {
-            text: "“Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.”",
-            name: "Emily Johnson",
-        },
-    ];
-
-    const newArrivals = [
-        {
-            image: new_arrival_1_image,
-            name: "Coconut Kiss",
-            price: "$2.99",
-            description: "A strong and concentrated shot of coffee.",
-        },
-        {
-            image: new_arrival_2_image,
-            name: "Pumpkin Spice Surprise",
-            price: "$3.49",
-            description: "A shot of espresso diluted with hot water.",
-        },
-        {
-            image: new_arrival_3_image,
-            name: "Toffee Temptation",
-            price: "$3.99",
-            description: "Equal parts of espresso, steamed milk, and foam, topped with cocoa.",
-        },
-        {
-            image: new_arrival_4_image,
-            name: "Gingerbread Galore",
-            price: "$4.49",
-            description: "Creamy espresso with steamed milk and a thin layer of foam.",
-        },
-        {
-            image: new_arrival_5_image,
-            name: "Salted Caramel Sip",
-            price: "$3.99",
-            description: "A nutty and indulgent latte with a hint of macadamia flavor.",
-        },
-    ];
-
-    const bestSelling = [
-        {
-            image: new_arrival_1_image,
-            name: "Cinnamon Swirl",
-            price: "$2.99",
-            description: "A strong and concentrated shot of coffee.",
-        },
-        {
-            image: new_arrival_2_image,
-            name: "Hazelnut Heaven",
-            price: "$3.49",
-            description: "A shot of espresso diluted with hot water.",
-        },
-        {
-            image: new_arrival_3_image,
-            name: "Peppermint Perk",
-            price: "$3.99",
-            description: "Equal parts of espresso, steamed milk, and foam, topped with cocoa.",
-        },
-        {
-            image: new_arrival_4_image,
-            name: "Berry Blast",
-            price: "$4.49",
-            description: "Creamy espresso with steamed milk and a thin layer of foam.",
-        },
-        {
-            image: new_arrival_5_image,
-            name: "Macadamia Nut Latte",
-            price: "$3.99",
-            description: "A nutty and indulgent latte with a hint of macadamia flavor.",
-        },
-    ];
-
-    const blogs = [
-        { id: 1, image: blog_1_image, title: 'What is the best Coffee?', desc: 'Ullamcorper ultrices elit viverra congue velit amet. Egestas bibendum leo odio fringilla quam netus sagittis non eu pellentesque facilisis.' },
-        { id: 2, image: blog_2_image, title: 'How coffee works for your body', desc: 'Ullamcorper ultrices elit viverra congue velit amet. Egestas bibendum leo odio fringilla quam netus sagittis non eu pellentesque facilisis.' },
-        { id: 3, image: blog_3_image, title: 'Cup of coffee for your happiness', desc: 'Ullamcorper ultrices elit viverra congue velit amet. Egestas bibendum leo odio fringilla quam netus sagittis non eu pellentesque facilisis.' },
-    ];
-
     const visibleProducts = 3;
+    const [currentIndexTestimoni, setCurrentIndexTestimoni] = useState(0);
+    //--------STATES VIEW--------//
 
+    //---------FUNCTIONS---------//
     const handleArrowBackBestShop = () => {
         if (productIndex > 0) {
             setProductIndex((prev) => prev - 1);
@@ -144,20 +50,42 @@ const Home = () => {
     };
 
     const handleArrowForwardBestShop = () => {
-        if (productIndex < products.length - visibleProducts) {
+        if (productIndex < dataMenuTopOrders.length - visibleProducts) {
             setProductIndex((prev) => prev + 1);
         }
     };
 
-    const [currentIndexTestimoni, setCurrentIndexTestimoni] = useState(0);
-
     const handlePreviousTestimoni = () => {
-        setCurrentIndexTestimoni((prevIndex) => (prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1));
+        setCurrentIndexTestimoni((prevIndex) => (prevIndex === 0 ? dataTestimoni.length - 1 : prevIndex - 1));
     };
 
     const handleNextTestimoni = () => {
-        setCurrentIndexTestimoni((prevIndex) => (prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1));
+        setCurrentIndexTestimoni((prevIndex) => (prevIndex === dataTestimoni.length - 1 ? 0 : prevIndex + 1));
     };
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const topOrders = await MenuService.getTopOrders();
+                setDataMenuTopOrders(topOrders);
+
+                const topRelease = await MenuService.getTopRelease();
+                setDataMenuTopRelease(topRelease);
+
+                const testimoni = await TestimoniService.getAllTestimoni();
+                setDataTestimoni(testimoni);
+
+                const topReleaseBlogs = await BlogService.getTopReleaseBlogs();
+                setDataBlogTopRelease(topReleaseBlogs);
+            } catch (err) {
+                console.log("Error fetching data:", err);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+    //---------FUNCTIONS---------//
 
     return (
         <div className={css['container']}>
@@ -208,11 +136,11 @@ const Home = () => {
                             transform: `translateX(-${productIndex * (100 / visibleProducts)}%)`,
                         }}
                     >
-                        {products.map((product) => (
+                        {dataMenuTopOrders.map((product) => (
                             <div key={product.id} className={css['card-product']}>
-                                <img src={product.image} alt={product.title} />
-                                <div className={css['title']}>{product.title}</div>
-                                <div className={css['price']}>{product.price}</div>
+                                <img src={product.image_hd} alt={product.nama} />
+                                <div className={css['title']}>{product.nama}</div>
+                                <div className={css['price']}>{product.harga}</div>
                             </div>
                         ))}
                     </div>
@@ -224,9 +152,9 @@ const Home = () => {
                 <button className={css["arrow"]} onClick={handlePreviousTestimoni}>
                     <IoIosArrowBack />
                 </button>
-                <div key={currentIndexTestimoni}>
-                    <div className={css["text"]}>{testimonials[currentIndexTestimoni].text}</div>
-                    <div className={css["name"]}>{testimonials[currentIndexTestimoni].name}</div>
+                <div>
+                    <div className={css["text"]}>{dataTestimoni[currentIndexTestimoni].words}</div>
+                    <div className={css["name"]}>{dataTestimoni[currentIndexTestimoni].customer}</div>
                 </div>
                 <button className={css["arrow"]} onClick={handleNextTestimoni}>
                     <IoIosArrowForward />
@@ -282,16 +210,16 @@ const Home = () => {
                 <div className={css["sort-category"]}>
                     <div className={css["title"]}>New Arrivals</div>
                     <div className={css["list-product"]}>
-                        {newArrivals.map((product, index) => (
+                        {dataMenuTopRelease.map((product, index) => (
                             <div key={index} className={css["card-product"]}>
-                                <img src={product.image} alt={product.name} />
+                                <img src={product.image} alt={product.nama} />
                                 <div className={css["text-container"]}>
                                     <div className={css["name"]}>
-                                        <div className={css["sub-name"]}>{product.name}</div>
+                                        <div className={css["sub-name"]}>{product.nama}</div>
                                         <div className={css["dots"]}>............................................................................................................................................................</div>
-                                        <div className={css["price"]}>{product.price}</div>
+                                        <div className={css["price"]}>{product.harga}</div>
                                     </div>
-                                    <div className={css["description"]}>{product.description}</div>
+                                    <div className={css["description"]}>{product.deskripsi}</div>
                                 </div>
                             </div>
                         ))}
@@ -301,16 +229,16 @@ const Home = () => {
                 <div className={css["sort-category"]}>
                     <div className={css["title"]}>Best Selling</div>
                     <div className={css["list-product"]}>
-                        {bestSelling.map((product, index) => (
+                        {dataMenuTopOrders.map((product, index) => (
                             <div key={index} className={css["card-product"]}>
-                                <img src={product.image} alt={product.name} />
+                                <img src={product.image} alt={product.nama} />
                                 <div className={css["text-container"]}>
                                     <div className={css["name"]}>
-                                        <div className={css["sub-name"]}>{product.name}</div>
+                                        <div className={css["sub-name"]}>{product.nama}</div>
                                         <div className={css["dots"]}>............................................................................................................................................................</div>
-                                        <div className={css["price"]}>{product.price}</div>
+                                        <div className={css["price"]}>{product.harga}</div>
                                     </div>
-                                    <div className={css["description"]}>{product.description}</div>
+                                    <div className={css["description"]}>{product.deskripsi}</div>
                                 </div>
                             </div>
                         ))}
@@ -371,12 +299,12 @@ const Home = () => {
                     </div>
                 </div>
                 <div style={{ maxWidth: "100%", overflow: "hidden" }}>
-                    <div className={css['blogs']} >
-                        {blogs.map((blog) => (
+                    <div className={css['blogs']}>
+                        {dataBlogTopRelease.map((blog) => (
                             <div key={blog.id} className={css['card-blog']}>
                                 <img src={blog.image} alt={blog.title} />
                                 <div className={css['title']}>{blog.title}</div>
-                                <div className={css['desc']}>{blog.desc}</div>
+                                <div className={css['desc']}>{blog.article}</div>
                             </div>
                         ))}
                     </div>

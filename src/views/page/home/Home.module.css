@@ -210,6 +210,9 @@
   font-size: 24px;
   font-style: italic;
   font-family: 'Open Sans', sans-serif;
+  max-width: 70dvw;
+  width: 70dvw;
+  min-width: 70dvw;
 }
 
 .container .container-testimoni .name {
